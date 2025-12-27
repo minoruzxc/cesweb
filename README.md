@@ -1,18 +1,19 @@
 # Controle de Estoque Simples (CES) - Projeto Integrador
 
 Objetivo: 
--Replicar as funcionalidades e acessibilidade do sistema anterior em um projeto Maven
--Desenvolver front-end web simples evitando navegação excessiva entre telas e opções
--Desenvolver interação para o banco de dados MySQL por meio do servidor tomcat e html
+- Replicar as funcionalidades e acessibilidade do sistema anterior em um projeto Maven
+- Desenvolver front-end web simples evitando navegação excessiva entre telas e opções
+- Desenvolver interação para o banco de dados MySQL por meio do servidor tomcat e html.
 
-##Utilizado no projeto 💻
--Java Maven
--MySQL
--Apache Tomcat
--Dependencias Spring:
-  Spring Web - testes com tomcat
-  MySQL JDBC driver, Spring Data JPA - comunicação com banco de dados sql
-  Lombok, Thymeleaf - agilizar estruturação do código com boilerplates
+## Utilizado no projeto 💻
+- Java Maven
+- MySQL
+- Apache Tomcat
+- Dependencias Spring:
+
+  - Spring Web: testes com tomcat
+  - MySQL JDBC driver, Spring Data JPA: comunicação com banco de dados sql
+  - Lombok, Thymeleaf: agilizar estruturação do código com boilerplates
 
 # README do projeto prévio:
 

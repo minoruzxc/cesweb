@@ -14,6 +14,9 @@ Objetivo:
   - Spring Web: testes com tomcat
   - MySQL JDBC driver, Spring Data JPA: comunicação com banco de dados sql
   - Lombok, Thymeleaf: agilizar estruturação do código com boilerplates
+ 
+### TODO 🔨
+ - vincular nivel acesso com usuarios
 
 # README do projeto prévio:
 

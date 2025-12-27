@@ -18,5 +18,5 @@ public class Usuario {
     private Integer id;
     public String nome;
     private String pass;
-    public String acesso;
+    public String acesso; //substituir por acesso_id futuramente após testes
 }

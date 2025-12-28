@@ -10,8 +10,7 @@
         <div><!-- navegação temporaria-->
             <h3>Indice de acesso temporario</h3>
             <a th:href="@{/}"> Home</a> |
-            Adicionar produto |
-            <a th:href="@{/retirarproduto}">Editar produto</a>
+            Adicionar produto 
         </div>
         <h1>Adicionar Produto ao estoque</h1>
         <form th:action="@{/registrarproduto}" th:object="${produto}" method="POST">

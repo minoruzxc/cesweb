@@ -14,7 +14,9 @@ public class ProdutoService {
     
     public Produto criar(Produto p) {
         p.setId(null);
-        produtoRepository.save(p);
+        if (p.getQuantidade() > 0){
+            produtoRepository.save(p);
+        }
         return p;
     }
     

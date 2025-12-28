@@ -6,14 +6,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <h3>Controle de Estoque Simples</h3><!-- Cabeçalho -->
-        <nav></nav><!-- Painel de controle -->
-        <p>Esta pagina mostra a tabela com os produtos</p>
+        <h2>Controle de Estoque Simples</h2><!-- Cabeçalho -->
+        <nav><!-- Painel de controle -->
+            
+        </nav>
         <div><!-- navegação temporaria-->
             <h3>Indice de acesso temporario</h3>
             Home |
-            <a th:href="@{/adicionarproduto}">Adicionar produto</a> |
-            <a th:href="@{/retirarproduto}">Editar produto</a>
+            <a th:href="@{/adicionarproduto}">Adicionar produto</a>
+            
+            <a th:href="@{/cadastrousuario}">| Cadastrar usuario</a><!-- Esconder comando em CSS--> 
         </div>
         
         <h1>Lista de produtos em estoque</h1>

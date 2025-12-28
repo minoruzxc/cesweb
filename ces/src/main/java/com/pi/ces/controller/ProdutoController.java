@@ -43,6 +43,13 @@ public class ProdutoController {
         return "editarproduto";
     }
     
+    @GetMapping("/excluirproduto")
+    public String excluirProduto (@RequestParam String id, Model model){
+        Integer idProduto = Integer.parseInt(id);
+        produtoService.excluir(idProduto);
+        return "redirect:/";
+    }
+    
     //Postmappings
     
     @PostMapping("/registrarproduto")
@@ -51,10 +58,5 @@ public class ProdutoController {
             return "redirect:/"; //retorna ao menu principal
     }
     
-    @GetMapping("/excluirproduto")
-    public String excluirProduto (@RequestParam String id, Model model){
-        Integer idProduto = Integer.parseInt(id);
-        produtoService.excluir(idProduto);
-        return "redirect:/";
-    }
+    
 }

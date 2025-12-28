@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
@@ -11,7 +11,13 @@
             <h3>Indice de acesso temporario</h3>
             <a th:href="@{/}"> Home</a> |
             <a th:href="@{/adicionarproduto}">Adicionar produto</a> |
-            Retirar produto
+            Editar produto
         </div>
+        <h2>Detalhes do produto</h2>
+        <p>Id: <span th:text="${produto.id}"/></p>
+        <p>Nome: <span th:text="${produto.nome}"/></p>
+        <p>Estoque: <span th:text="${produto.quantidade}"/></p>
+        <p>Descrição: <span th:text="${produto.descricao}"/></p>
+        <a th:href="@{'/excluirproduto?id=' + ${produto.id}}">Remover produto do banco!</a>
     </body>
 </html>

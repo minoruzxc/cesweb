@@ -1,17 +1,24 @@
 <!DOCTYPE html>
-<html xmlns="w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <h3></h3><!-- Cabeçalho -->
+        <h2>Adicionar produtos</h2><!-- Cabeçalho -->
         <div><!-- navegação temporaria-->
             <h3>Indice de acesso temporario</h3>
             <a th:href="@{/}"> Home</a> |
             Adicionar produto |
-            <a th:href="@{/retirarproduto}">Retirar produto</a>
+            <a th:href="@{/retirarproduto}">Editar produto</a>
         </div>
+        <h1>Adicionar Produto ao estoque</h1>
+        <form th:action="@{/registrarproduto}" th:object="${produto}" method="POST">
+            <p>Nome: <input type="text" th:field="${produto.nome}"/></p>
+            <p>Descrição do produto: <input type="text" th:field="${produto.descricao}"/></p>
+            <p>Quantidade: <input type="number" th:field="${produto.quantidade}"/></p>
+            <p><input type="submit" value="Adicionar filme"/></p>
+        </form>
     </body>
 </html>

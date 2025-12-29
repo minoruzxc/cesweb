@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title>TODO supply a title</title>
+        <title>Registrar usuario</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <div><!-- navegação temporaria-->
-            <h3>Indice de acesso temporario</h3>
-            <a th:href="@{/}"> Home</a> |
-            <a th:href="@{/adicionarproduto}">Adicionar produto</a> 
+        <div>
+            <h1>Registrar novo usuario</h1>
+        <form th:action="@{/usuario/adicionar}" th:object="${usuario}" method="POST">
+            <p>Nome: <input type="text" th:field="${usuario.nome}"/></p>
+            <p>Senha: <input type="text" th:field="${usuario.pass}"/></p>
+            <!--<p>Nivel de acesso: <input type="text" th:field="${produto.acesso}"/></p>-->
+            <p><input type="submit" value="Registrar usuario"/></p>
+        </form>
         </div>
-        <div>TODO write content</div>
+        <div>
+        </div>
     </body>
 </html>

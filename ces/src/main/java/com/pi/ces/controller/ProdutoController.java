@@ -2,7 +2,9 @@
 package com.pi.ces.controller;
 
 import com.pi.ces.model.Produto;
+import com.pi.ces.model.Usuario;
 import com.pi.ces.service.ProdutoService;
+import com.pi.ces.service.UsuarioService;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,13 +21,45 @@ public class ProdutoController {
     @Autowired
     ProdutoService produtoService;
     
+    @Autowired
+    UsuarioService userSvc;
+    
     @GetMapping("/")
     public String root(Model model) {
+        //test admin account setup
+        Usuario admin = new Usuario();
+        String phUser = "admin";
+        String phPass = "pass";
+        admin.setNome(phUser);
+        admin.setPass(phPass);
+        List<Usuario> listaUsers = userSvc.buscarTodos();
+        boolean foundAdmin = false;
+        for (Usuario u : listaUsers) {
+            if (u.getNome().equals(phUser)){
+                foundAdmin = true;
+            }
+        }
+        if (!foundAdmin){
+            userSvc.criar(admin);
+        }
+        //setup ends here
         List<Produto> produtosFetched = new ArrayList<>();
         produtosFetched = produtoService.buscarTodos(); //recolhe os produtos no repositorio
         model.addAttribute("produtos", produtosFetched);
+        Usuario usuario = new Usuario();
+        model.addAttribute("usuario",usuario);
         
         return "index";
+    }
+    
+    @GetMapping("/adminpanel")
+    public String adminPanel(Model model){
+        return "adminpanel";
+    }
+    
+    @GetMapping("/userpanel")
+    public String userPanel(Model model){
+        return "userpanel";
     }
     
     @GetMapping("/adicionarproduto")

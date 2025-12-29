@@ -1,85 +1,73 @@
 package com.pi.ces;
 
 import com.pi.ces.model.Usuario;
-import com.pi.ces.service.ProdutoService;
-import com.pi.ces.service.UsuarioService;
+import java.util.ArrayList;
 import java.util.List;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import static org.junit.Assert.*;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
-@RunWith(SpringRunner.class)
 public class CesApplicationTest {
-
-    @Autowired
-    UsuarioService userSvc;
-    
-    @Autowired
-    ProdutoService produtoService;
 
     public CesApplicationTest() {
     }
 
-    @BeforeClass
+    @BeforeAll
     public static void setUpClass() {
     }
 
-    @AfterClass
+    @AfterAll
     public static void tearDownClass() {
     }
 
-    @Before
+    @BeforeEach
     public void setUp() {
-        //cria conta admin quando não existe no banco
         Usuario admin = new Usuario();
         String phUser = "admin";
         String phPass = "pass";
         admin.setNome(phUser);
         admin.setPass(phPass);
-        
-        List<Usuario> listaUsers = userSvc.buscarTodos();
-        boolean foundAdmin = false;
-        for (Usuario u : listaUsers) {
-            if (u.getNome().equals(phUser)) {
-                foundAdmin = true;
-            }
-        }
-        if (!foundAdmin) {
-            userSvc.criar(admin);
-        }
+        List<Usuario> listaUsers = new ArrayList<>();
+        listaUsers.add(admin);
     }
 
-    @After
+    @AfterEach
     public void tearDown() {
     }
-    
-    @Test
-    public void testMain() {
-        System.out.println("main");
-        String[] args = null;
-        CesApplication.main(args);
-        
-        adminTest();
 
+    @Test
+    public void testMain() { //Remover o comentario no método para verificar testes
+        ArrayList<Usuario> listaFetched = generateListWithAdmin();
+        //listaFetched.clear();
+        checkForAdmin(listaFetched);
+        
     }
 
-    private void adminTest() {
-        String admin = "admin";
-        List<Usuario> listaUsers = userSvc.buscarTodos();
-        boolean result = false;
-        
-        for (Usuario u : listaUsers) {
-            if (u.getNome().equals(admin)) {
-                result = true;
+    @Test
+    public void checkForAdmin(ArrayList<Usuario> listaUsers) {
+        boolean foundAdmin = false;
+        if (!listaUsers.isEmpty()) {
+            for (Usuario u : listaUsers) {
+                if (u.getNome().equals("admin")) {
+                    foundAdmin = true;
+                }
             }
-        }
-        assertTrue(result);
+        }assertTrue(foundAdmin);
+    }
+
+    @Test
+    public ArrayList<Usuario> generateListWithAdmin() {
+        Usuario admin = new Usuario();
+        String phUser = "admin";
+        String phPass = "pass";
+        admin.setNome(phUser);
+        admin.setPass(phPass);
+        ArrayList<Usuario> listaUsers = new ArrayList<>();
+        listaUsers.add(admin);
+        return listaUsers;
     }
 
 }

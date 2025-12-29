@@ -17,6 +17,6 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     public String nome;
-    private String pass;
+    public String pass;
     public String acesso; //substituir por acesso_id futuramente após testes
 }

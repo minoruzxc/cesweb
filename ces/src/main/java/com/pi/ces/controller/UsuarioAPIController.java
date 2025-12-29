@@ -25,7 +25,7 @@ public class UsuarioAPIController {
     
     @PostMapping("/adicionar")
     public ResponseEntity<Usuario> criar (@RequestBody Usuario usuario){
-        usuario.setId(null);
+       usuario.setId(null);
        Usuario novoUsuario = usuarioService.criar(usuario);
        return new ResponseEntity<>(novoUsuario,HttpStatus.CREATED);
     }

@@ -27,7 +27,7 @@ public class ProdutoController {
     @GetMapping("/")
     public String root(Model model) {
         //test admin account setup
-        Usuario admin = new Usuario();
+        /*Usuario admin = new Usuario();
         String phUser = "admin";
         String phPass = "pass";
         admin.setNome(phUser);
@@ -42,6 +42,7 @@ public class ProdutoController {
         if (!foundAdmin){
             userSvc.criar(admin);
         }
+        */
         //setup ends here
         List<Produto> produtosFetched = new ArrayList<>();
         produtosFetched = produtoService.buscarTodos(); //recolhe os produtos no repositorio
@@ -52,20 +53,18 @@ public class ProdutoController {
         return "index";
     }
     
-    @GetMapping("/adminpanel")
-    public String adminPanel(Model model){
-        return "adminpanel";
-    }
-    
-    @GetMapping("/userpanel")
-    public String userPanel(Model model){
-        return "userpanel";
-    }
-    
     @GetMapping("/adicionarproduto")
     public String adicionarProduto(Model model){
         model.addAttribute("produto",new Produto());
         return "adicionarproduto";
+    }
+    
+    @GetMapping ("/userpanel")
+    public String fetchProd(Model model){
+        List<Produto> produtosFetched = new ArrayList<>();
+        produtosFetched = produtoService.buscarTodos(); //recolhe os produtos no repositorio
+        model.addAttribute("produtos", produtosFetched);
+        return "userpanel";
     }
     
     @GetMapping("/editarproduto")

@@ -8,7 +8,7 @@
     <body>
         <div>
             <h1>Registrar novo usuario</h1>
-        <form th:action="@{/usuario/adicionar}" th:object="${usuario}" method="POST">
+        <form th:action="@{/cadastro/criar}" th:object="${usuario}" method="POST">
             <p>Nome: <input type="text" th:field="${usuario.nome}"/></p>
             <p>Senha: <input type="text" th:field="${usuario.pass}"/></p>
             <!--<p>Nivel de acesso: <input type="text" th:field="${produto.acesso}"/></p>-->

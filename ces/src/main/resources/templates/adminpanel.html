@@ -8,7 +8,7 @@
     <body>
         <h2>Controle de Estoque Simples - Controle de administrador</h2><!-- Cabeçalho -->
         <div>
-            <a th:href="@{/cadastro/adicionar}">| Cadastrar novo usuario</a>
+            <a th:href="@{/cadastro/adicionar}">- Cadastrar novo usuario -</a>
         </div>
         <br>
         <h1>Usuarios cadastrados</h1>
@@ -25,7 +25,7 @@
                     <td th:text="${usuario.id}"></td>
                     <td th:text="${usuario.nome}"></td>
                     <td th:text="${usuario.acesso}"></td>
-                    <td><a th:href="@{'/excluirusuario?id=' + ${usuario.id}}"> !!Remover usuario!!</a></td><!-- placeholder-->
+                    <td><a th:href="@{'/cadastro/excluir?id=' + ${usuario.id}}"> !!Remover usuario!!</a></td><!-- placeholder-->
                 </tr>
             </tbody>
          

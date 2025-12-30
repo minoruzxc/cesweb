@@ -76,6 +76,16 @@ public class ProdutoController {
         return "editarproduto";
     }
     
+    @PostMapping("/atualizarproduto")
+    public String atualizarProduto(@RequestParam String newqtd,@RequestParam String id){
+        Integer idReceived = Integer.parseInt(id);
+        Integer qtd = Integer.parseInt(newqtd);
+        Produto produtoSearch = produtoService.buscarPorId(idReceived);
+        produtoSearch.setQuantidade(qtd);
+        produtoService.atualizar(idReceived, produtoSearch);
+        return "redirect:/";
+    }
+    
     @GetMapping("/excluirproduto")
     public String excluirProduto (@RequestParam String id, Model model){
         Integer idProduto = Integer.parseInt(id);

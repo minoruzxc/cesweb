@@ -1,43 +1,58 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <title>CES (admin)</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    </head>
-    <body>
-                        <div class="container">
-        <h2>Controle de Estoque Simples - Controle de administrador</h2><!-- Cabeçalho -->
-        <div>
-            <a th:href="@{/cadastro/adicionar}">- Cadastrar novo usuario -</a>
+
+<head>
+    <title>CES (admin)</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row"><!-- header  row-->
+            <div class="col-2">
+                <img src="../img/ces.png" alt="logo" style="height: auto;width: 80%;">
+            </div>
+
+            <div class="col-10">
+                <h2 style="text-align: left; align-items: center;margin-top: 5%;">Controle de Estoque Simples</h2>
+            </div>
+        </div><!-- header row -->
+        <div class="row">
+            <div class="col-2" style="padding: 10px;"><!-- painel -->
+                <h3>Ações</h3>
+                <a th:href="@{/cadastro/adicionar}" class="btn btn-primary">Cadastrar usuario</a>
+            </div><!--painel-->
+            <div class="col-10" style="padding: 10px;"> <!--conteudos-->
+                <h3>Usuarios cadastrados</h3>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>Nv. Acesso</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="usuario : ${usuarios}">
+                            <td th:text="${usuario.id}"></td>
+                            <td th:text="${usuario.nome}"></td>
+                            <td th:text="${usuario.acesso}"></td>
+                            <td><a class="btn btn-danger" th:href="@{'/cadastro/excluir?id=' + ${usuario.id}}"> Remover usuario</a></td>
+                            <!-- placeholder-->
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
         </div>
-        <br>
-        <h1>Usuarios cadastrados</h1>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nome</th>
-                    <th>Nv. Acesso</th>
-                </tr>
-            </thead>
-             <tbody>
-                <tr th:each="usuario : ${usuarios}">
-                    <td th:text="${usuario.id}"></td>
-                    <td th:text="${usuario.nome}"></td>
-                    <td th:text="${usuario.acesso}"></td>
-                    <td><a th:href="@{'/cadastro/excluir?id=' + ${usuario.id}}"> !!Remover usuario!!</a></td><!-- placeholder-->
-                </tr>
-            </tbody>
-         
-        </table>
-         
-        </table>
-        
-        
-        <script src="script.js"></script>
+
+
+
+        <script src="generic.js"></script>
         <script src="jquery.js"></script>
-                        </div>
-    </body>
+    </div>
+</body>
+
 </html>

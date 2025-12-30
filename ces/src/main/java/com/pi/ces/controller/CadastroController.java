@@ -21,7 +21,6 @@ public class CadastroController {
 
     @GetMapping("/adicionar")
     public String cadastroUsuario(@ModelAttribute Usuario usuario, Model model) {
-        usuarioService.criar(usuario);
         return "cadastrousuario";
     }
 
@@ -30,7 +29,7 @@ public class CadastroController {
         usuarioService.criar(usuario);
         List<Usuario> lu = usuarioService.buscarTodos();
         model.addAttribute("usuarios", lu);
-        return "adminpanel";
+        return "redirect:/";
     }
     
     @GetMapping("/excluir")
